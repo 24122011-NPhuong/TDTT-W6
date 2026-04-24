@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_dcb4d8bb659eff1cd46eda00367dc0b8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_dcb4d8bb659eff1cd46eda00367dc0b8" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_dcb4d8bb659eff1cd46eda00367dc0b8 = L.map(
+                "map_dcb4d8bb659eff1cd46eda00367dc0b8",
+                {
+                    center: [10.7755254, 106.7021047],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 15,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e41ef384cd33c41a2691d388a62bd76d = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e41ef384cd33c41a2691d388a62bd76d.addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+
+            var geocoderOpts_geocoder_451c674dc8f1be312e58c2feedc3f1a8 = {
+  "collapsed": false,
+  "position": "topleft",
+  "defaultMarkGeocode": true,
+  "zoom": 11,
+  "provider": "nominatim",
+  "providerOptions": {
+},
+};
+
+            // note: geocoder name should start with lowercase
+            var geocoderName_geocoder_451c674dc8f1be312e58c2feedc3f1a8 = geocoderOpts_geocoder_451c674dc8f1be312e58c2feedc3f1a8["provider"];
+
+            var customGeocoder_geocoder_451c674dc8f1be312e58c2feedc3f1a8 = L.Control.Geocoder[ geocoderName_geocoder_451c674dc8f1be312e58c2feedc3f1a8 ](
+                geocoderOpts_geocoder_451c674dc8f1be312e58c2feedc3f1a8['providerOptions']
+            );
+            geocoderOpts_geocoder_451c674dc8f1be312e58c2feedc3f1a8["geocoder"] = customGeocoder_geocoder_451c674dc8f1be312e58c2feedc3f1a8;
+
+            L.Control.geocoder(
+                geocoderOpts_geocoder_451c674dc8f1be312e58c2feedc3f1a8
+            ).on('markgeocode', function(e) {
+                var zoom = geocoderOpts_geocoder_451c674dc8f1be312e58c2feedc3f1a8['zoom'] || map_dcb4d8bb659eff1cd46eda00367dc0b8.getZoom();
+                map_dcb4d8bb659eff1cd46eda00367dc0b8.setView(e.geocode.center, zoom);
+            }).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+
+        
+    
+            var circle_5dd7e2fe2ddd74f347dfac9383f7498f = L.circle(
+                [10.7755254, 106.7021047],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1000, "stroke": true, "weight": 3}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            circle_5dd7e2fe2ddd74f347dfac9383f7498f.bindTooltip(
+                `<div>
+                     Vùng tìm kiếm 1km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f08e08e9e6f8079e916945d0a73ca109 = L.marker(
+                [10.7755254, 106.7021047],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+        var icon_8281dd994bf628c9dc8da02907143cf5 = L.icon({
+  "iconUrl": "https://openweathermap.org/img/wn/10d@2x.png",
+  "iconSize": [60, 60],
+});
+        
+    
+            marker_f08e08e9e6f8079e916945d0a73ca109.bindTooltip(
+                `<div>
+                     <b>Ho Chi Minh City</b><br>Tọa độ: 10.7755254, 106.7021047<br>Thời tiết: Light rain
+                 </div>`,
+                {
+  "permanent": true,
+  "direction": "bottom",
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f08e08e9e6f8079e916945d0a73ca109.setIcon(icon_8281dd994bf628c9dc8da02907143cf5);
+            
+    
+            var marker_0710315b83220e060537316461e75342 = L.marker(
+                [10.7758758, 106.7017186],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+        var icon_d3348987542ba839a7bb005514144773 = L.icon({
+  "iconUrl": "https://openweathermap.org/img/wn/10d@2x.png",
+  "iconSize": [35, 35],
+});
+        
+    
+            marker_0710315b83220e060537316461e75342.bindTooltip(
+                `<div>
+                     Công viên: Công viên Đống Đa
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0710315b83220e060537316461e75342.setIcon(icon_d3348987542ba839a7bb005514144773);
+            
+    
+            var marker_81bdaef35d7314dd2542d51a1885f9b1 = L.marker(
+                [10.7758758, 106.7017186],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_c46811d8855f673770fc40fc14d1badc = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 9pt; color: green; font-weight: bold; text-align: center;\"\u003eC\u00f4ng vi\u00ean \u0110\u1ed1ng \u0110a\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_81bdaef35d7314dd2542d51a1885f9b1.setIcon(div_icon_c46811d8855f673770fc40fc14d1badc);
+            
+    
+            var poly_line_a4715158e808cf233d3967e59044f51f = L.polyline(
+                [[10.7755254, 106.7021047], [10.7758758, 106.7017186]],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "#e67e22", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var marker_b2b639ef6598db25248e25f79173011b = L.marker(
+                [10.7757006, 106.70191165],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_23d29d326a185ac3f20938645a8a0aaa = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 8pt; color: #e67e22; background: white; border: 1px solid; border-radius: 5px; text-align: center;\"\u003e0.06 km\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "className": "empty",
+});
+        
+    
+                marker_b2b639ef6598db25248e25f79173011b.setIcon(div_icon_23d29d326a185ac3f20938645a8a0aaa);
+            
+    
+            var marker_b77eab88236556c4ec108791bb8e0160 = L.marker(
+                [10.7759655, 106.7025528],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+        var icon_a13675161d120c33a102cad18f2e0291 = L.icon({
+  "iconUrl": "https://openweathermap.org/img/wn/10d@2x.png",
+  "iconSize": [35, 35],
+});
+        
+    
+            marker_b77eab88236556c4ec108791bb8e0160.bindTooltip(
+                `<div>
+                     Công viên: Công viên Lam Sơn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b77eab88236556c4ec108791bb8e0160.setIcon(icon_a13675161d120c33a102cad18f2e0291);
+            
+    
+            var marker_c535752307f4053e96b5472feff1a577 = L.marker(
+                [10.7759655, 106.7025528],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_9641f4a7ec9cb291aa8cd574fca7ac49 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 9pt; color: green; font-weight: bold; text-align: center;\"\u003eC\u00f4ng vi\u00ean Lam S\u01a1n\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_c535752307f4053e96b5472feff1a577.setIcon(div_icon_9641f4a7ec9cb291aa8cd574fca7ac49);
+            
+    
+            var poly_line_3feef0a8768743ce2df20b597b2108ce = L.polyline(
+                [[10.7755254, 106.7021047], [10.7759655, 106.7025528]],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "#e67e22", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var marker_c7b8cbed05e5d4eb6ad91969e43d1417 = L.marker(
+                [10.775745449999999, 106.70232875],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_ccf92d9422836d98deaddfd18217c313 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 8pt; color: #e67e22; background: white; border: 1px solid; border-radius: 5px; text-align: center;\"\u003e0.07 km\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "className": "empty",
+});
+        
+    
+                marker_c7b8cbed05e5d4eb6ad91969e43d1417.setIcon(div_icon_ccf92d9422836d98deaddfd18217c313);
+            
+    
+            var marker_189229a019932fa36c16963e78e57621 = L.marker(
+                [10.7759898, 106.701583],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+        var icon_4581a3449263085cc149aabdf946a75b = L.icon({
+  "iconUrl": "https://openweathermap.org/img/wn/10d@2x.png",
+  "iconSize": [35, 35],
+});
+        
+    
+            marker_189229a019932fa36c16963e78e57621.bindTooltip(
+                `<div>
+                     Công viên: Vườn hoa Tượng đài Bác Hồ
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_189229a019932fa36c16963e78e57621.setIcon(icon_4581a3449263085cc149aabdf946a75b);
+            
+    
+            var marker_b50663e0c0a5159ca419ed4623a7cb24 = L.marker(
+                [10.7759898, 106.701583],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_3e60f049c9557cf3e9c0e098b116e017 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 9pt; color: green; font-weight: bold; text-align: center;\"\u003eV\u01b0\u1eddn hoa T\u01b0\u1ee3ng \u0111\u00e0i B\u00e1c H\u1ed3\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_b50663e0c0a5159ca419ed4623a7cb24.setIcon(div_icon_3e60f049c9557cf3e9c0e098b116e017);
+            
+    
+            var poly_line_509600af8464e97aac72feeb1119e19a = L.polyline(
+                [[10.7755254, 106.7021047], [10.7759898, 106.701583]],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "#e67e22", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var marker_e1de77b2ebe9e535675dc167635165be = L.marker(
+                [10.775757599999999, 106.70184385],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_f3c0dd18c96a2776d58c68e2fdd811b0 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 8pt; color: #e67e22; background: white; border: 1px solid; border-radius: 5px; text-align: center;\"\u003e0.08 km\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "className": "empty",
+});
+        
+    
+                marker_e1de77b2ebe9e535675dc167635165be.setIcon(div_icon_f3c0dd18c96a2776d58c68e2fdd811b0);
+            
+    
+            var marker_37cdcaa503d435861c6b0c5b3e5aa6d8 = L.marker(
+                [10.774671, 106.7021113],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+        var icon_ff976b8a0c11d539cea6746ebe5a2e40 = L.icon({
+  "iconUrl": "https://openweathermap.org/img/wn/10d@2x.png",
+  "iconSize": [35, 35],
+});
+        
+    
+            marker_37cdcaa503d435861c6b0c5b3e5aa6d8.bindTooltip(
+                `<div>
+                     Công viên: Công viên Thương xá Tax
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_37cdcaa503d435861c6b0c5b3e5aa6d8.setIcon(icon_ff976b8a0c11d539cea6746ebe5a2e40);
+            
+    
+            var marker_92e893d8e01478038ff49bd9608f0a19 = L.marker(
+                [10.774671, 106.7021113],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_73332e15254353d9f895300bcc78e714 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 9pt; color: green; font-weight: bold; text-align: center;\"\u003eC\u00f4ng vi\u00ean Th\u01b0\u01a1ng x\u00e1 Tax\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_92e893d8e01478038ff49bd9608f0a19.setIcon(div_icon_73332e15254353d9f895300bcc78e714);
+            
+    
+            var poly_line_452229d7a5f8425328a17b2b1dcdae65 = L.polyline(
+                [[10.7755254, 106.7021047], [10.774671, 106.7021113]],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "#e67e22", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var marker_33c7dd227043217da3afb081600dbe28 = L.marker(
+                [10.775098199999999, 106.70210800000001],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_e8c8e66d5965793fdc4640dfc3eab82b = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 8pt; color: #e67e22; background: white; border: 1px solid; border-radius: 5px; text-align: center;\"\u003e0.09 km\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "className": "empty",
+});
+        
+    
+                marker_33c7dd227043217da3afb081600dbe28.setIcon(div_icon_e8c8e66d5965793fdc4640dfc3eab82b);
+            
+    
+            var marker_1761f907634e32db4cc7335ea0522aa2 = L.marker(
+                [10.7777958, 106.701581],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+        var icon_2bc8e44e3397c2bab58a56e060632881 = L.icon({
+  "iconUrl": "https://openweathermap.org/img/wn/10d@2x.png",
+  "iconSize": [35, 35],
+});
+        
+    
+            marker_1761f907634e32db4cc7335ea0522aa2.bindTooltip(
+                `<div>
+                     Công viên: Công viên Chi Lăng
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1761f907634e32db4cc7335ea0522aa2.setIcon(icon_2bc8e44e3397c2bab58a56e060632881);
+            
+    
+            var marker_b054a7121503e64cfbf46bde3b5c0020 = L.marker(
+                [10.7777958, 106.701581],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_c525c5136dfce03f5dfe676c012eaba4 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 9pt; color: green; font-weight: bold; text-align: center;\"\u003eC\u00f4ng vi\u00ean Chi L\u0103ng\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_b054a7121503e64cfbf46bde3b5c0020.setIcon(div_icon_c525c5136dfce03f5dfe676c012eaba4);
+            
+    
+            var poly_line_a0765c5d0ce27db9f4bfee9171966afd = L.polyline(
+                [[10.7755254, 106.7021047], [10.7777958, 106.701581]],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "#e67e22", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var marker_9dbdad92acbacb935d03a909bc84611d = L.marker(
+                [10.7766606, 106.70184285],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_942bf329fe5381503b55002e01800522 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 8pt; color: #e67e22; background: white; border: 1px solid; border-radius: 5px; text-align: center;\"\u003e0.26 km\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "className": "empty",
+});
+        
+    
+                marker_9dbdad92acbacb935d03a909bc84611d.setIcon(div_icon_942bf329fe5381503b55002e01800522);
+            
+    
+            var marker_c4d3e69f6cecc690683123e3696d1a9a = L.marker(
+                [10.7739434, 106.6995637],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+        var icon_d769404f1b04f1ac73fb1ffb4e8dbb8a = L.icon({
+  "iconUrl": "https://openweathermap.org/img/wn/10d@2x.png",
+  "iconSize": [35, 35],
+});
+        
+    
+            marker_c4d3e69f6cecc690683123e3696d1a9a.bindTooltip(
+                `<div>
+                     Công viên: Công viên Lê Lợi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c4d3e69f6cecc690683123e3696d1a9a.setIcon(icon_d769404f1b04f1ac73fb1ffb4e8dbb8a);
+            
+    
+            var marker_8238e67a7a863dad6d9be2c9a477b135 = L.marker(
+                [10.7739434, 106.6995637],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_aba14fe60bae506c34e87cb54ce1347d = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 9pt; color: green; font-weight: bold; text-align: center;\"\u003eC\u00f4ng vi\u00ean L\u00ea L\u1ee3i\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_8238e67a7a863dad6d9be2c9a477b135.setIcon(div_icon_aba14fe60bae506c34e87cb54ce1347d);
+            
+    
+            var poly_line_0ff2a796af0fad0f41373d2caa9a800f = L.polyline(
+                [[10.7755254, 106.7021047], [10.7739434, 106.6995637]],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "#e67e22", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var marker_d2b3dfddb2207affb6d881d6bccf6e6b = L.marker(
+                [10.7747344, 106.7008342],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_fa9859b7f483d40a5dc24f08e1899428 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 8pt; color: #e67e22; background: white; border: 1px solid; border-radius: 5px; text-align: center;\"\u003e0.33 km\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "className": "empty",
+});
+        
+    
+                marker_d2b3dfddb2207affb6d881d6bccf6e6b.setIcon(div_icon_fa9859b7f483d40a5dc24f08e1899428);
+            
+    
+            var marker_d3e229860cd061058460d8c647b378e0 = L.marker(
+                [10.7764963, 106.6991978],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+        var icon_bd40c454a63136f0076897c574ffa58e = L.icon({
+  "iconUrl": "https://openweathermap.org/img/wn/10d@2x.png",
+  "iconSize": [35, 35],
+});
+        
+    
+            marker_d3e229860cd061058460d8c647b378e0.bindTooltip(
+                `<div>
+                     Công viên: Công viên Bách Tùng Diệp
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d3e229860cd061058460d8c647b378e0.setIcon(icon_bd40c454a63136f0076897c574ffa58e);
+            
+    
+            var marker_34bdd0d1dedb80cd6ec6a9f2c390d6c6 = L.marker(
+                [10.7764963, 106.6991978],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_a12dd2f68ba4cba3906326b5423b5a85 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 9pt; color: green; font-weight: bold; text-align: center;\"\u003eC\u00f4ng vi\u00ean B\u00e1ch T\u00f9ng Di\u1ec7p\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_34bdd0d1dedb80cd6ec6a9f2c390d6c6.setIcon(div_icon_a12dd2f68ba4cba3906326b5423b5a85);
+            
+    
+            var poly_line_ba99ca47dd0c11b7b57d0b374bb9b099 = L.polyline(
+                [[10.7755254, 106.7021047], [10.7764963, 106.6991978]],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "#e67e22", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var marker_025fd1869bf4b66cd48fb45adf006790 = L.marker(
+                [10.776010849999999, 106.70065124999999],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_990ad64f8c0c1efa7bd03b737eca33a1 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 8pt; color: #e67e22; background: white; border: 1px solid; border-radius: 5px; text-align: center;\"\u003e0.34 km\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "className": "empty",
+});
+        
+    
+                marker_025fd1869bf4b66cd48fb45adf006790.setIcon(div_icon_990ad64f8c0c1efa7bd03b737eca33a1);
+            
+    
+            var marker_ff854ee7a668e72ac7fda43a2e19cdf7 = L.marker(
+                [10.7752866, 106.7063105],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+        var icon_64fe9a505273c08307fde877a877ce54 = L.icon({
+  "iconUrl": "https://openweathermap.org/img/wn/10d@2x.png",
+  "iconSize": [35, 35],
+});
+        
+    
+            marker_ff854ee7a668e72ac7fda43a2e19cdf7.bindTooltip(
+                `<div>
+                     Công viên: Công trường Mê Linh
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ff854ee7a668e72ac7fda43a2e19cdf7.setIcon(icon_64fe9a505273c08307fde877a877ce54);
+            
+    
+            var marker_a2c4ef4f5fc08d97400dfe771a009dbc = L.marker(
+                [10.7752866, 106.7063105],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_5bce5d6326aa283e60859c4e390a94f5 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 9pt; color: green; font-weight: bold; text-align: center;\"\u003eC\u00f4ng tr\u01b0\u1eddng M\u00ea Linh\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_a2c4ef4f5fc08d97400dfe771a009dbc.setIcon(div_icon_5bce5d6326aa283e60859c4e390a94f5);
+            
+    
+            var poly_line_cdf70c8723153f927188b99856d4b8a2 = L.polyline(
+                [[10.7755254, 106.7021047], [10.7752866, 106.7063105]],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "#e67e22", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var marker_27d03cd02da9f33516332915cea0be0e = L.marker(
+                [10.775406, 106.7042076],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_eda92041e39f0aa9d0284afa1171475a = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 8pt; color: #e67e22; background: white; border: 1px solid; border-radius: 5px; text-align: center;\"\u003e0.46 km\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "className": "empty",
+});
+        
+    
+                marker_27d03cd02da9f33516332915cea0be0e.setIcon(div_icon_eda92041e39f0aa9d0284afa1171475a);
+            
+    
+            var marker_d7090d0dde50034446c589838560968f = L.marker(
+                [10.7724908, 106.7059365],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+        var icon_60d536a1b7d0e8e1f11fbac33e3ce714 = L.icon({
+  "iconUrl": "https://openweathermap.org/img/wn/10d@2x.png",
+  "iconSize": [35, 35],
+});
+        
+    
+            marker_d7090d0dde50034446c589838560968f.bindTooltip(
+                `<div>
+                     Công viên: Công viên Majestic Hotel
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d7090d0dde50034446c589838560968f.setIcon(icon_60d536a1b7d0e8e1f11fbac33e3ce714);
+            
+    
+            var marker_fe0cfc0a70ad4e4629a8d9102250b9a6 = L.marker(
+                [10.7724908, 106.7059365],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_6d1d1abbebdce5aeff92d98e8f6dd95f = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 9pt; color: green; font-weight: bold; text-align: center;\"\u003eC\u00f4ng vi\u00ean Majestic Hotel\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_fe0cfc0a70ad4e4629a8d9102250b9a6.setIcon(div_icon_6d1d1abbebdce5aeff92d98e8f6dd95f);
+            
+    
+            var poly_line_35f6d94a5e236c53a9e5864cf99af94a = L.polyline(
+                [[10.7755254, 106.7021047], [10.7724908, 106.7059365]],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "#e67e22", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var marker_ae1855233641c13896f27b91c6837fd2 = L.marker(
+                [10.7740081, 106.7040206],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_567e8609773d7dd969dde8157755639d = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 8pt; color: #e67e22; background: white; border: 1px solid; border-radius: 5px; text-align: center;\"\u003e0.54 km\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "className": "empty",
+});
+        
+    
+                marker_ae1855233641c13896f27b91c6837fd2.setIcon(div_icon_567e8609773d7dd969dde8157755639d);
+            
+    
+            var marker_dd7065a45ee88a2a1ef2a0919009c609 = L.marker(
+                [10.7722799, 106.7064892],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+        var icon_7fcef9113f821d337e00dd93e67d958d = L.icon({
+  "iconUrl": "https://openweathermap.org/img/wn/10d@2x.png",
+  "iconSize": [35, 35],
+});
+        
+    
+            marker_dd7065a45ee88a2a1ef2a0919009c609.bindTooltip(
+                `<div>
+                     Công viên: Công viên Bến Bạch Đằng
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dd7065a45ee88a2a1ef2a0919009c609.setIcon(icon_7fcef9113f821d337e00dd93e67d958d);
+            
+    
+            var marker_891faae73efe86ed1443ce3af9f25a62 = L.marker(
+                [10.7722799, 106.7064892],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_593a8b997f0f83dd604c26ab01038a70 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 9pt; color: green; font-weight: bold; text-align: center;\"\u003eC\u00f4ng vi\u00ean B\u1ebfn B\u1ea1ch \u0110\u1eb1ng\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [75, -10],
+  "className": "empty",
+});
+        
+    
+                marker_891faae73efe86ed1443ce3af9f25a62.setIcon(div_icon_593a8b997f0f83dd604c26ab01038a70);
+            
+    
+            var poly_line_1b602c5991364853001d446b82ed7ff9 = L.polyline(
+                [[10.7755254, 106.7021047], [10.7722799, 106.7064892]],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "#e67e22", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var marker_41a68900abafc27674e1afeb152f532f = L.marker(
+                [10.77390265, 106.70429695],
+                {
+}
+            ).addTo(map_dcb4d8bb659eff1cd46eda00367dc0b8);
+        
+    
+            var div_icon_28da1a3945bb88eef4506f81841653ce = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 8pt; color: #e67e22; background: white; border: 1px solid; border-radius: 5px; text-align: center;\"\u003e0.60 km\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "className": "empty",
+});
+        
+    
+                marker_41a68900abafc27674e1afeb152f532f.setIcon(div_icon_28da1a3945bb88eef4506f81841653ce);
+            
+</script>
+</html>
